@@ -10,15 +10,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1F2F5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.SigninController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: F1F2F5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.SignInController">
+    <children>
       <TextField fx:id="tfEmail" layoutX="379.0" layoutY="130.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
       <Label layoutX="379.0" layoutY="100.0" text="E-mail" textFill="#333333">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnSignIn" layoutX="379.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700; -fx-text-fill: fff; -fx-font-size: 16;" text="Entrar" textAlignment="CENTER">
+      <Button fx:id="btnSignIn" layoutX="379.0" layoutY="260.0" mnemonicParsing="false" onAction="#signIn" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700; -fx-text-fill: fff; -fx-font-size: 16;" text="Entrar" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -47,6 +47,19 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <PasswordField layoutX="379.0" layoutY="205.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: fff; -fx-border-color: FF9900; -fx-border-radius: 5;" />
+      <PasswordField fx:id="tfPassword" layoutX="379.0" layoutY="205.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: fff; -fx-border-color: FF9900; -fx-border-radius: 5;" />
+      <Label fx:id="lbGoToSignUp" layoutX="382.0" layoutY="311.0" text="Nao tem uma conta?">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGoToSignUp" layoutX="470.0" layoutY="308.0" mnemonicParsing="false" onAction="#goToSignUp" style="-fx-background-color: none;" text="Registre-se">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

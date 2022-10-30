@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1F2F5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.SignInController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: F1F2F5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.SignInController">
     <children>
       <TextField fx:id="tfEmail" layoutX="379.0" layoutY="130.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
       <Label layoutX="379.0" layoutY="100.0" text="E-mail" textFill="#333333">
