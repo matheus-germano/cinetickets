@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -39,7 +40,7 @@ public class SignUpController implements Initializable {
     private PasswordField pfPassword;
 
     @FXML
-    private TextField tfBirthDate;
+    private DatePicker dpBirthDate;
 
     @FXML
     private TextField tfEmail;
