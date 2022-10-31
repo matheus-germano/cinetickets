@@ -4,32 +4,25 @@
  */
 package com.mycompany.cinetickets.Controllers;
 
-import com.mycompany.cinetickets.App;
 import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Utils.Base64Utils;
 import com.mycompany.cinetickets.Utils.Misc;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -37,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author matheus
  */
-public class SignUpController implements Initializable {
+public class SignUpController {
     Misc misc = new Misc();
 
     @FXML
@@ -63,11 +56,6 @@ public class SignUpController implements Initializable {
 
     @FXML
     private TextField tfName;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
 
     @FXML
     public void signUp() {
