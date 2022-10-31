@@ -69,8 +69,8 @@ public class SignInController implements Initializable {
 
             try {
                 con = dbConnection.getConnection();
-                String query = "select distinct * from cliente where email = '" + email + "' and senha = '" + password
-                        + "'";
+                String query = "select * from cliente where email = '" + email + "' and senha = '" + password
+                        + "' limit 1";
 
                 st = (Statement) con.createStatement();
                 rs = st.executeQuery(query);
@@ -103,6 +103,12 @@ public class SignInController implements Initializable {
                     } while (rs.next());
 
                     App.user = user;
+
+                    try {
+                        goToMovieSessions();
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
@@ -150,6 +156,18 @@ public class SignInController implements Initializable {
         }
 
         return true;
+    }
+
+    @FXML
+    public void goToMovieSessions() throws IOException {
+        Stage stage = (Stage) tfPassword.getScene().getWindow();
+
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("movieSessions.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
+
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
