@@ -5,9 +5,17 @@
 package com.mycompany.cinetickets.Controllers;
 
 import com.mycompany.cinetickets.App;
+import com.mycompany.cinetickets.Database.DbConnection;
+import com.mycompany.cinetickets.Utils.Base64Utils;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +34,7 @@ import javafx.stage.Stage;
  * @author matheus
  */
 public class SignInController implements Initializable {
+    
     @FXML
     private TextField tfEmail;
     
@@ -45,9 +54,59 @@ public class SignInController implements Initializable {
     
     @FXML
     public void signIn() {
+        Connection con = null;
+        ResultSet rs = null;
+        Statement st = null;
+        
         if (validateInfo()) {
+            Base64Utils base64Utils = new Base64Utils();
+            DbConnection dbConnection = new DbConnection();
             String email = tfEmail.getText();
-            String password = tfPassword.getText();
+            String password = base64Utils.encode(tfPassword.getText());
+            
+            try {
+                con = dbConnection.getConnection();
+                String query = "select distinct * from cliente where email = '" + email + "' and senha = '" + password + "'";
+
+                st = (Statement) con.createStatement();
+                rs = st.executeQuery(query);
+                
+                if (rs.next() == false) {
+                    Alert a = new Alert(Alert.AlertType.ERROR);
+                    a.setTitle("Ocorreu um erro");
+                    a.setContentText("Usuario nao encontrado com as credenciais informadas");
+                    a.showAndWait();
+
+                    return;
+                } else {
+                    do {
+                        System.out.println(rs.getString("cpf"));
+                        System.out.println(rs.getString("nome"));
+                        System.out.println(rs.getString("dataNascimento"));
+                        System.out.println(rs.getString("email"));
+                        System.out.println(rs.getString("senha"));
+                    } while (rs.next());
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+
+                try {
+                    if (con != null) {
+                        con.close();
+                    }
+
+                    if (st != null) {
+                        st.close();
+                    }
+
+                    if (rs != null) {
+                        rs.close();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
     }
     

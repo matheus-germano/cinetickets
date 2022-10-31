@@ -63,7 +63,7 @@ insert into filme (nome, genero, lancamento, duracao, classificacao) values ('Ba
 insert into filme (nome, genero, lancamento, duracao, classificacao) values ('The Joker', 'Drama', '2019-10-04', 20200, '16 anos');
 
 insert into cliente values
-('12345678900', 'Matheus Germano','2003-02-27', 'dev.mgermano@gmail.com', 'MTIz'),
+('12345678900', 'Matheus Germano','2003-02-27', 'dev.mgermano@gmail.com', 'QE1nMjcwMjAzQA=='),
 ('00987654321', 'Matheus Costa','2000-02-04', 'matheus.sico@hotmail.com', 'MTIz'),
 ('11111111111', 'Angelo Holandini','2003-02-05', 'angelo.holandini@gmail.com', 'MTIz'),
 ('22222222222', 'Joao Silva','2004-02-05', 'joao.silva@gmail.com', 'MTIz'),
