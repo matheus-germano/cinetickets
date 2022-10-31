@@ -5,13 +5,23 @@
 package com.mycompany.cinetickets.Controllers;
 
 import com.mycompany.cinetickets.App;
+import com.mycompany.cinetickets.Database.DbConnection;
+import com.mycompany.cinetickets.Utils.Base64Utils;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -60,7 +70,82 @@ public class SignUpController implements Initializable {
     
     @FXML
     public void signUp() {
+        Connection con = null;
+        ResultSet rs = null;
+        Statement st = null;
         
+        if (validateInfo()) {
+            Base64Utils base64Utils = new Base64Utils();
+            DbConnection dbConnection = new DbConnection();
+            
+            String id = tfId.getText();
+            String name = tfName.getText();
+            String email = tfEmail.getText();
+            String password = base64Utils.encode(pfPassword.getText());
+            LocalDate birthDate = dpBirthDate.getValue();
+            
+            try {
+                con = dbConnection.getConnection();
+                String query = "insert into cliente values ('" + id + "', '" + name + "','" + birthDate + "', '" + email + "', '" + password + "')";
+
+                st = (Statement) con.createStatement();
+                st.execute(query);
+                
+                try {
+                    goToSignIn();   
+                } catch(Exception e) {
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    if (con != null) {
+                        con.close();
+                    }
+
+                    if (st != null) {
+                        st.close();
+                    }
+
+                    if (rs != null) {
+                        rs.close();
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+    public boolean validateInfo() {
+        if (tfEmail.getText().isEmpty() || pfPassword.getText().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("Ocorreu um erro");
+            a.setContentText("Preencha todos os campos");
+            a.showAndWait();
+            
+            return false;
+        }
+        
+        if (!validatePassword()) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("Ocorreu um erro");
+            a.setContentText("A senha deve conter pelo menos um numero, uma letra maiuscula, uma minuscula e um caracter especial");
+            a.showAndWait();
+            
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public boolean validatePassword() {
+        if (pfPassword.getText().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     @FXML
