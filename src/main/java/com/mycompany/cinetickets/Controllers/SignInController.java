@@ -37,6 +37,7 @@ import javafx.stage.Stage;
  * @author matheus
  */
 public class SignInController implements Initializable {
+    Misc misc = new Misc();
 
     @FXML
     private TextField tfEmail;
@@ -160,25 +161,11 @@ public class SignInController implements Initializable {
 
     @FXML
     public void goToMovieSessions() throws IOException {
-        Stage stage = (Stage) tfPassword.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("movieSessions.fxml"));
-        AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-
-        stage.setScene(scene);
-        stage.show();
+        misc.navigateTo("movieSessions", (Stage) tfPassword.getScene().getWindow());
     }
 
     @FXML
     public void goToSignUp() throws IOException {
-        Stage stage = (Stage) tfPassword.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("signUp.fxml"));
-        AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-
-        stage.setScene(scene);
-        stage.show();
+        misc.navigateTo("signup", (Stage) tfPassword.getScene().getWindow());
     }
 }

@@ -38,6 +38,7 @@ import javafx.stage.Stage;
  * @author matheus
  */
 public class SignUpController implements Initializable {
+    Misc misc = new Misc();
 
     @FXML
     private Button btnGoToSignIn;
@@ -146,13 +147,6 @@ public class SignUpController implements Initializable {
 
     @FXML
     public void goToSignIn() throws IOException {
-        Stage stage = (Stage) pfPassword.getScene().getWindow();
-
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("signIn.fxml"));
-        AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-
-        stage.setScene(scene);
-        stage.show();
+        misc.navigateTo("signin", (Stage) pfPassword.getScene().getWindow());
     }
 }
