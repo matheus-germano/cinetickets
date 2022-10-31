@@ -58,7 +58,7 @@ public class SignInController implements Initializable {
         ResultSet rs = null;
         Statement st = null;
         
-        if (validateInfo()) {
+        if (validateSignInFormData()) {
             Base64Utils base64Utils = new Base64Utils();
             DbConnection dbConnection = new DbConnection();
             String email = tfEmail.getText();
@@ -110,7 +110,7 @@ public class SignInController implements Initializable {
         }
     }
     
-    public boolean validateInfo() {
+    public boolean validateSignInFormData() {
         if (tfEmail.getText().isEmpty() || tfPassword.getText().isEmpty()) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("Ocorreu um erro");

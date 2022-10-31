@@ -60,8 +60,6 @@ public class SignUpController implements Initializable {
 
     @FXML
     private TextField tfName;
-
-
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -74,7 +72,7 @@ public class SignUpController implements Initializable {
         ResultSet rs = null;
         Statement st = null;
         
-        if (validateInfo()) {
+        if (validateSignUpFormData()) {
             Base64Utils base64Utils = new Base64Utils();
             DbConnection dbConnection = new DbConnection();
             
@@ -118,7 +116,7 @@ public class SignUpController implements Initializable {
         }
     }
     
-    public boolean validateInfo() {
+    public boolean validateSignUpFormData() {
         if (tfEmail.getText().isEmpty() || pfPassword.getText().isEmpty()) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("Ocorreu um erro");
