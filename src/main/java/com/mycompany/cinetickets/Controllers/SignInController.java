@@ -95,11 +95,11 @@ public class SignInController implements Initializable {
                                 rs.getString("senha"),
                                 localDate);
 
-                        System.out.println(rs.getString("cpf"));
-                        System.out.println(rs.getString("nome"));
-                        System.out.println(rs.getString("email"));
-                        System.out.println(rs.getString("senha"));
-                        System.out.println(localDate);
+                        System.out.println(user.getId());
+                        System.out.println(user.getName());
+                        System.out.println(user.getEmail());
+                        System.out.println(user.getPassword());
+                        System.out.println(user.getBirthDate());
                     } while (rs.next());
 
                     App.user = user;
@@ -107,7 +107,7 @@ public class SignInController implements Initializable {
                     try {
                         goToMovieSessions();
                     } catch (Exception e) {
-                        // TODO: handle exception
+                        Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, e);
                     }
                 }
             } catch (SQLException ex) {

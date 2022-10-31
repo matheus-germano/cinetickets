@@ -16,6 +16,6 @@ public class MovieSessions implements Initializable {
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    lbWelcome.setText("Bem vinde, " + App.user.getName());
+    lbWelcome.setText(App.user.getName() + "!");
   }
 }
