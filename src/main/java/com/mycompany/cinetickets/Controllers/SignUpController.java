@@ -7,6 +7,8 @@ package com.mycompany.cinetickets.Controllers;
 import com.mycompany.cinetickets.App;
 import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Utils.Base64Utils;
+import com.mycompany.cinetickets.Utils.Misc;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -36,7 +38,7 @@ import javafx.stage.Stage;
  * @author matheus
  */
 public class SignUpController implements Initializable {
-    
+
     @FXML
     private Button btnGoToSignIn;
 
@@ -60,39 +62,40 @@ public class SignUpController implements Initializable {
 
     @FXML
     private TextField tfName;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     public void signUp() {
         Connection con = null;
         ResultSet rs = null;
         Statement st = null;
-        
+
         if (validateSignUpFormData()) {
             Base64Utils base64Utils = new Base64Utils();
             DbConnection dbConnection = new DbConnection();
-            
+
             String id = tfId.getText();
             String name = tfName.getText();
             String email = tfEmail.getText();
             String password = base64Utils.encode(pfPassword.getText());
             LocalDate birthDate = dpBirthDate.getValue();
-            
+
             try {
                 con = dbConnection.getConnection();
-                String query = "insert into cliente values ('" + id + "', '" + name + "','" + birthDate + "', '" + email + "', '" + password + "')";
+                String query = "insert into cliente values ('" + id + "', '" + name + "','" + birthDate + "', '" + email
+                        + "', '" + password + "')";
 
                 st = (Statement) con.createStatement();
                 st.execute(query);
-                
+
                 try {
-                    goToSignIn();   
-                } catch(Exception e) {
-                    
+                    goToSignIn();
+                } catch (Exception e) {
+
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,41 +118,36 @@ public class SignUpController implements Initializable {
             }
         }
     }
-    
+
     public boolean validateSignUpFormData() {
+        Misc misc = new Misc();
+
         if (tfEmail.getText().isEmpty() || pfPassword.getText().isEmpty()) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("Ocorreu um erro");
             a.setContentText("Preencha todos os campos");
             a.showAndWait();
-            
+
             return false;
         }
-        
-        if (!validatePassword()) {
+
+        if (!misc.validatePassword(pfPassword.getText())) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setTitle("Ocorreu um erro");
-            a.setContentText("A senha deve conter pelo menos um numero, uma letra maiuscula, uma minuscula e um caracter especial");
+            a.setContentText(
+                    "A senha deve conter pelo menos um numero, uma letra maiuscula, uma minuscula e um caracter especial");
             a.showAndWait();
-            
+
             return false;
         }
-        
+
         return true;
     }
-    
-    public boolean validatePassword() {
-        if (pfPassword.getText().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
+
     @FXML
     public void goToSignIn() throws IOException {
         Stage stage = (Stage) pfPassword.getScene().getWindow();
-        
+
         FXMLLoader loader = new FXMLLoader(App.class.getResource("signIn.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
