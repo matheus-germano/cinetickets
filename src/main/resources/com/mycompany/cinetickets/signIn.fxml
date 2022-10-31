@@ -12,16 +12,35 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: F1F2F5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.SignInController">
     <children>
-      <TextField fx:id="tfEmail" layoutX="375.0" layoutY="178.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
       <Label layoutX="375.0" layoutY="148.0" text="E-mail" textFill="#333333">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+      <TextField fx:id="tfEmail" layoutX="375.0" layoutY="178.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
+      <Label layoutX="375.0" layoutY="228.0" text="Senha" textFill="#333333">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="tfPassword" layoutX="375.0" layoutY="253.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: fff; -fx-border-color: FF9900; -fx-border-radius: 5;" />
       <Button fx:id="btnSignIn" layoutX="375.0" layoutY="308.0" mnemonicParsing="false" onAction="#signIn" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700; -fx-text-fill: fff; -fx-font-size: 16;" text="Entrar" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <Label fx:id="lbGoToSignUp" layoutX="378.0" layoutY="359.0" text="Nao tem uma conta?">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGoToSignUp" layoutX="466.0" layoutY="356.0" mnemonicParsing="false" onAction="#goToSignUp" style="-fx-background-color: none;" text="Registre-se">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
       <ImageView fitHeight="141.0" fitWidth="150.0" layoutX="71.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/logo.png" />
@@ -42,24 +61,5 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="375.0" layoutY="228.0" text="Senha" textFill="#333333">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="tfPassword" layoutX="375.0" layoutY="253.0" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: fff; -fx-border-color: FF9900; -fx-border-radius: 5;" />
-      <Label fx:id="lbGoToSignUp" layoutX="378.0" layoutY="359.0" text="Nao tem uma conta?">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnGoToSignUp" layoutX="466.0" layoutY="356.0" mnemonicParsing="false" onAction="#goToSignUp" style="-fx-background-color: none;" text="Registre-se">
-         <font>
-            <Font name="System Bold" size="10.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
    </children>
 </AnchorPane>

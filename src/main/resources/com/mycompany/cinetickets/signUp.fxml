@@ -13,39 +13,41 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #F1F2F5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.SignUpController">
    <children>
-      <TextField fx:id="tfEmail" layoutX="376.0" layoutY="211.0" prefHeight="20.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
+      <Label layoutX="376.0" layoutY="48.0" text="Nome completo" textFill="#333333">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfName" layoutX="376.0" layoutY="78.0" prefHeight="20.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
+      <Label layoutX="376.0" layoutY="115.0" text="Seu CPF" textFill="#333333">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfId" layoutX="376.0" layoutY="144.0" prefHeight="20.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
       <Label layoutX="376.0" layoutY="181.0" text="Seu e-mail" textFill="#333333">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnSignUp" layoutX="376.0" layoutY="381.0" mnemonicParsing="false" onAction="#signUp" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700; -fx-text-fill: fff; -fx-font-size: 16;" text="Registre-se" textAlignment="CENTER">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
+      <TextField fx:id="tfEmail" layoutX="376.0" layoutY="211.0" prefHeight="20.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
       <Label layoutX="376.0" layoutY="248.0" text="Sua senha" textFill="#333333">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
       <PasswordField fx:id="pfPassword" layoutX="376.0" layoutY="278.0" prefHeight="20.0" prefWidth="150.0" style="-fx-background-color: fff; -fx-border-color: FF9900; -fx-border-radius: 5;" />
-      <TextField fx:id="tfName" layoutX="376.0" layoutY="78.0" prefHeight="20.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
-      <Label layoutX="376.0" layoutY="48.0" text="Nome completo" textFill="#333333">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="376.0" layoutY="115.0" text="Seu CPF" textFill="#333333">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Label>
       <Label layoutX="376.0" layoutY="315.0" text="Data de nascimento" textFill="#333333">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+      <DatePicker fx:id="dpBirthDate" layoutX="376.0" layoutY="346.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: fff; -fx-border-color: FF9900; -fx-border-radius: 5;" />
+      <Button fx:id="btnSignUp" layoutX="376.0" layoutY="381.0" mnemonicParsing="false" onAction="#signUp" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700; -fx-text-fill: fff; -fx-font-size: 16;" text="Registre-se" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
       <Label fx:id="lbGoToSignIn" layoutX="377.0" layoutY="434.0" text="Ja tem uma conta?">
          <font>
             <Font size="10.0" />
@@ -59,7 +61,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="tfId" layoutX="376.0" layoutY="144.0" prefHeight="20.0" prefWidth="150.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
       <ImageView fitHeight="141.0" fitWidth="150.0" layoutX="71.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/logo.png" />
@@ -80,6 +81,5 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dpBirthDate" layoutX="376.0" layoutY="346.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: fff; -fx-border-color: FF9900; -fx-border-radius: 5;" />
    </children>
 </AnchorPane>
