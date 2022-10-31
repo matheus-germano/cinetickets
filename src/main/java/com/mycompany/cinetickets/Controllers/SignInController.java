@@ -6,6 +6,7 @@ package com.mycompany.cinetickets.Controllers;
 
 import com.mycompany.cinetickets.App;
 import com.mycompany.cinetickets.Database.DbConnection;
+import com.mycompany.cinetickets.Models.User;
 import com.mycompany.cinetickets.Utils.Base64Utils;
 import com.mycompany.cinetickets.Utils.Misc;
 
@@ -15,6 +16,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -81,13 +83,26 @@ public class SignInController implements Initializable {
 
                     return;
                 } else {
+                    User user = new User();
+
                     do {
+                        LocalDate localDate = LocalDate.parse(rs.getString("dataNascimento"));
+
+                        user.createUser(
+                                rs.getString("cpf"),
+                                rs.getString("nome"),
+                                rs.getString("email"),
+                                rs.getString("senha"),
+                                localDate);
+
                         System.out.println(rs.getString("cpf"));
                         System.out.println(rs.getString("nome"));
-                        System.out.println(rs.getString("dataNascimento"));
                         System.out.println(rs.getString("email"));
                         System.out.println(rs.getString("senha"));
+                        System.out.println(localDate);
                     } while (rs.next());
+
+                    App.user = user;
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);

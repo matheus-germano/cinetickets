@@ -8,10 +8,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import com.mycompany.cinetickets.Models.User;
+
 /**
  * JavaFX App
  */
 public class App extends Application {
+    public static User user = new User();
 
     private static Scene scene;
 
