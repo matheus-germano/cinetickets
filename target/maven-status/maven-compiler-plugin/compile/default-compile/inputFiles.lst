@@ -1,8 +1,12 @@
 C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\App.java
 C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Models\User.java
+C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Controllers\MovieSessions.java
 C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\module-info.java
 C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Controllers\SignUpController.java
 C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Database\DbConnection.java
 C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Controllers\SignInController.java
 C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Utils\Misc.java
+C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Components\MovieCard.java
 C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Utils\Base64Utils.java
+C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Models\Movie.java
+C:\Users\matheus\Documents\projects\java\cinetickets\src\main\java\com\mycompany\cinetickets\Models\Session.java

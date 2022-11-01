@@ -1,0 +1,79 @@
+package com.mycompany.cinetickets.Models;
+
+import java.time.LocalDate;
+
+public class Movie {
+  private int id;
+  private String name;
+  private String image;
+  private String gender;
+  private LocalDate releasedAt;
+  private int duration;
+  private String rating;
+
+  public Movie(int id, String name, String image, String gender, LocalDate releasedAt, int duration, String rating) {
+    this.id = id;
+    this.name = name;
+    this.image = image;
+    this.gender = gender;
+    this.releasedAt = releasedAt;
+    this.duration = duration;
+    this.rating = rating;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
+  public String getGender() {
+    return gender;
+  }
+
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+
+  public LocalDate getReleasedAt() {
+    return releasedAt;
+  }
+
+  public void setReleasedAt(LocalDate releasedAt) {
+    this.releasedAt = releasedAt;
+  }
+
+  public int getDuration() {
+    return duration;
+  }
+
+  public void setDuration(int duration) {
+    this.duration = duration;
+  }
+
+  public String getRating() {
+    return rating;
+  }
+
+  public void setRating(String rating) {
+    this.rating = rating;
+  }
+}

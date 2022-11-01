@@ -1,4 +1,12 @@
+com\mycompany\cinetickets\Models\Movie.class
 com\mycompany\cinetickets\Models\User.class
 com\mycompany\cinetickets\App.class
+com\mycompany\cinetickets\Models\Session.class
+com\mycompany\cinetickets\Utils\Misc.class
+com\mycompany\cinetickets\Utils\Base64Utils.class
+com\mycompany\cinetickets\Controllers\MovieSessions.class
 module-info.class
+com\mycompany\cinetickets\Database\DbConnection.class
+com\mycompany\cinetickets\Components\MovieCard.class
 com\mycompany\cinetickets\Controllers\SignInController.class
+com\mycompany\cinetickets\Controllers\SignUpController.class

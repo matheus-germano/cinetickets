@@ -6,7 +6,9 @@ module com.mycompany.cinetickets {
 
     opens com.mycompany.cinetickets to javafx.fxml;
     opens com.mycompany.cinetickets.Controllers to javafx.fxml;
-    
+    opens com.mycompany.cinetickets.Components to javafx.fxml;
+
     exports com.mycompany.cinetickets;
     exports com.mycompany.cinetickets.Controllers;
+    exports com.mycompany.cinetickets.Components;
 }
