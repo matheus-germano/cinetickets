@@ -1,5 +1,6 @@
 package com.mycompany.cinetickets.Models;
 
+import java.sql.Time;
 import java.time.LocalDate;
 
 public class Movie {
@@ -8,10 +9,10 @@ public class Movie {
   private String image;
   private String gender;
   private LocalDate releasedAt;
-  private int duration;
+  private Time duration;
   private String rating;
 
-  public Movie(int id, String name, String image, String gender, LocalDate releasedAt, int duration, String rating) {
+  public Movie(int id, String name, String image, String gender, LocalDate releasedAt, Time duration, String rating) {
     this.id = id;
     this.name = name;
     this.image = image;
@@ -61,11 +62,11 @@ public class Movie {
     this.releasedAt = releasedAt;
   }
 
-  public int getDuration() {
+  public Time getDuration() {
     return duration;
   }
 
-  public void setDuration(int duration) {
+  public void setDuration(Time duration) {
     this.duration = duration;
   }
 

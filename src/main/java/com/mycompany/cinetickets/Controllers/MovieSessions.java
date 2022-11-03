@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
 import com.mycompany.cinetickets.App;
 import com.mycompany.cinetickets.Components.MovieCard;
 import com.mycompany.cinetickets.Database.DbConnection;
+import com.mycompany.cinetickets.Models.Movie;
 import com.mycompany.cinetickets.Models.Session;
 
 import javafx.fxml.FXML;
@@ -31,7 +33,8 @@ public class MovieSessions implements Initializable {
   @FXML
   private GridPane moviesGrid;
 
-  private ArrayList<Session> sessions = new ArrayList<Session>();
+  private ArrayList<Movie> movies = new ArrayList<Movie>();
+  private ArrayList<MovieCard> controllers = new ArrayList();
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
@@ -46,7 +49,7 @@ public class MovieSessions implements Initializable {
 
     try {
       con = dbConnection.getConnection();
-      String query = "select * from sessao";
+      String query = "select * from filme";
 
       st = (Statement) con.createStatement();
       rs = st.executeQuery(query);
@@ -55,8 +58,17 @@ public class MovieSessions implements Initializable {
         return;
       } else {
         do {
-          Session session = new Session(rs.getInt("idFilme"), rs.getInt("numeroSala"), rs.getString("dataHora"));
-          sessions.add(session);
+          LocalDate lancamento = LocalDate.parse(rs.getString("lancamento"));
+
+          Movie movie = new Movie(
+              rs.getInt("idFilme"),
+              rs.getString("nome"),
+              "",
+              rs.getString("genero"),
+              lancamento,
+              rs.getTime("duracao"),
+              rs.getString("classificacao"));
+          movies.add(movie);
         } while (rs.next());
       }
     } catch (SQLException ex) {
@@ -79,7 +91,7 @@ public class MovieSessions implements Initializable {
       }
     }
 
-    for (Session session : sessions) {
+    for (Movie movie : movies) {
       try {
         URL fxmlUrl = this.getClass()
             .getResource("/com/mycompany/cinetickets/movieCard.fxml");
@@ -93,6 +105,9 @@ public class MovieSessions implements Initializable {
         fxmlLoader.setLocation(fxmlUrl);
         AnchorPane card = fxmlLoader.load();
         MovieCard cardController = fxmlLoader.getController();
+        cardController.setMovieData(movie);
+        cardController.setGridParent(moviesGrid, controllers);
+        controllers.add(cardController);
 
         if (gridColumns == 2) {
           gridColumns = 0;
