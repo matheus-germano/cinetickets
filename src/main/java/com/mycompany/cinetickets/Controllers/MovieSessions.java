@@ -17,6 +17,7 @@ import com.mycompany.cinetickets.Components.MovieCard;
 import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Models.Movie;
 import com.mycompany.cinetickets.Models.Session;
+import com.mycompany.cinetickets.Utils.Misc;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class MovieSessions implements Initializable {
   @FXML
@@ -32,6 +35,9 @@ public class MovieSessions implements Initializable {
 
   @FXML
   private GridPane moviesGrid;
+
+  @FXML
+  private Pane btnLogout;
 
   private ArrayList<Movie> movies = new ArrayList<Movie>();
   private ArrayList<MovieCard> controllers = new ArrayList();
@@ -120,5 +126,13 @@ public class MovieSessions implements Initializable {
         e.printStackTrace();
       }
     }
+  }
+
+  @FXML
+  public void logout() throws IOException {
+    Misc misc = new Misc();
+    App.user = null;
+
+    misc.navigateTo("signin", (Stage) btnLogout.getScene().getWindow());
   }
 }
