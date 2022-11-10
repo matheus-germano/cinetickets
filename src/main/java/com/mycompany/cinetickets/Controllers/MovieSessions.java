@@ -16,7 +16,6 @@ import com.mycompany.cinetickets.App;
 import com.mycompany.cinetickets.Components.MovieCard;
 import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Models.Movie;
-import com.mycompany.cinetickets.Models.Session;
 import com.mycompany.cinetickets.Utils.Misc;
 
 import javafx.fxml.FXML;
