@@ -1,26 +1,19 @@
 package com.mycompany.cinetickets.Components;
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.mycompany.cinetickets.Controllers.SignInController;
 import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Models.Movie;
+import com.mycompany.cinetickets.Models.Session;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,6 +21,9 @@ import javafx.scene.layout.GridPane;
 
 public class MovieCard {
   private int movieId;
+  private ArrayList<MovieCard> controllers = new ArrayList();
+  private GridPane gridParent;
+  private ArrayList<Session> sessions = new ArrayList();
 
   @FXML
   private Label movieDuration;
@@ -47,18 +43,16 @@ public class MovieCard {
   @FXML
   private GridPane sessionsGrid;
 
-  private ArrayList<MovieCard> controllers = new ArrayList();
-  private GridPane gridParent;
-
   private void getMovieSessions() {
     Connection con = null;
     ResultSet rs = null;
     Statement st = null;
     DbConnection dbConnection = new DbConnection();
+    ArrayList<Session> sessions = new ArrayList();
 
     try {
       con = dbConnection.getConnection();
-      String query = "select * from sessao where idFilme = " + movieId;
+      String query = "select distinct numeroSala from sessao where idFilme = " + movieId;
 
       st = (Statement) con.createStatement();
       rs = st.executeQuery(query);
@@ -67,9 +61,12 @@ public class MovieCard {
         return;
       } else {
         do {
-          SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-          Date sessionDate = new Date(rs.getTimestamp("dataHora").getTime());
-          System.out.println(sdf.format(sessionDate));
+          // SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+          // Date sessionDate = new Date(rs.getTimestamp("dataHora").getTime());
+
+          Session session = new Session(movieId, rs.getInt("numeroSala"));
+
+          sessions.add(session);
         } while (rs.next());
       }
     } catch (SQLException e) {

@@ -1,14 +1,16 @@
 package com.mycompany.cinetickets.Models;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Session {
   private int movieId;
   private int roomId;
-  private String sessionDate;
+  private ArrayList<Date> sessions;
 
-  public Session(int movieId, int roomId, String sessionDate) {
+  public Session(int movieId, int roomId) {
     this.movieId = movieId;
     this.roomId = roomId;
-    this.sessionDate = sessionDate;
   }
 
   public int getMovieId() {
@@ -19,7 +21,11 @@ public class Session {
     return roomId;
   }
 
-  public String getSessionDate() {
-    return sessionDate;
+  public void setSessions(ArrayList<Date> sessions) {
+    this.sessions = sessions;
+  }
+
+  public ArrayList<Date> getSessions() {
+    return sessions;
   }
 }
