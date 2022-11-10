@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +26,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-public class MovieCard implements Initializable {
+public class MovieCard {
+  private int movieId;
+
   @FXML
   private Label movieDuration;
 
@@ -45,8 +50,7 @@ public class MovieCard implements Initializable {
   private ArrayList<MovieCard> controllers = new ArrayList();
   private GridPane gridParent;
 
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
+  private void getMovieSessions() {
     Connection con = null;
     ResultSet rs = null;
     Statement st = null;
@@ -54,7 +58,7 @@ public class MovieCard implements Initializable {
 
     try {
       con = dbConnection.getConnection();
-      String query = "select * from sessao";
+      String query = "select * from sessao where idFilme = " + movieId;
 
       st = (Statement) con.createStatement();
       rs = st.executeQuery(query);
@@ -63,7 +67,9 @@ public class MovieCard implements Initializable {
         return;
       } else {
         do {
-          LocalDate dataHora = LocalDate.parse(rs.getString("dataHora"));
+          SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+          Date sessionDate = new Date(rs.getTimestamp("dataHora").getTime());
+          System.out.println(sdf.format(sessionDate));
         } while (rs.next());
       }
     } catch (SQLException e) {
@@ -88,17 +94,18 @@ public class MovieCard implements Initializable {
   }
 
   public void setMovieData(Movie movie) {
+    this.movieId = movie.getId();
     this.movieDuration.setText(movie.getDuration() + "");
     this.movieTitle.setText(movie.getName());
     this.movieRating.setText(movie.getRating());
-
-    System.out.println(movie.getRating());
 
     Image image = new Image(
         this.getClass().getResource("/assets/" + movie.getRating().split(" ")[0].toLowerCase() + ".png").toString(),
         true);
 
     movieImageRating.setImage(image);
+
+    getMovieSessions();
   }
 
   public void setGridParent(GridPane pane, ArrayList<MovieCard> controllers) {
