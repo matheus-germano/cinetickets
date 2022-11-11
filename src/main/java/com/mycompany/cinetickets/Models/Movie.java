@@ -11,8 +11,10 @@ public class Movie {
   private LocalDate releasedAt;
   private Time duration;
   private String rating;
+  private String poster;
 
-  public Movie(int id, String name, String image, String gender, LocalDate releasedAt, Time duration, String rating) {
+  public Movie(int id, String name, String image, String gender, LocalDate releasedAt, Time duration, String rating,
+      String poster) {
     this.id = id;
     this.name = name;
     this.image = image;
@@ -20,6 +22,7 @@ public class Movie {
     this.releasedAt = releasedAt;
     this.duration = duration;
     this.rating = rating;
+    this.poster = poster;
   }
 
   public int getId() {
@@ -76,5 +79,13 @@ public class Movie {
 
   public void setRating(String rating) {
     this.rating = rating;
+  }
+
+  public String getPoster() {
+    return poster;
+  }
+
+  public void setPoster(String poster) {
+    this.poster = poster;
   }
 }

@@ -96,11 +96,15 @@ public class MovieCard {
     this.movieTitle.setText(movie.getName());
     this.movieRating.setText(movie.getRating());
 
-    Image image = new Image(
+    Image poster = new Image(movie.getPoster());
+
+    moviePoster.setImage(poster);
+
+    Image rating = new Image(
         this.getClass().getResource("/assets/" + movie.getRating().split(" ")[0].toLowerCase() + ".png").toString(),
         true);
 
-    movieImageRating.setImage(image);
+    movieImageRating.setImage(rating);
 
     getMovieSessions();
   }

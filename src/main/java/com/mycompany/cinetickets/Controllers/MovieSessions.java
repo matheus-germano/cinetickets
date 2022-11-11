@@ -72,7 +72,8 @@ public class MovieSessions implements Initializable {
               rs.getString("genero"),
               lancamento,
               rs.getTime("duracao"),
-              rs.getString("classificacao"));
+              rs.getString("classificacao"),
+              rs.getString("poster"));
           movies.add(movie);
         } while (rs.next());
       }
