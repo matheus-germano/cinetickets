@@ -14,9 +14,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: f1f2f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.MovieSessions">
    <children>
-      <ScrollPane fitToWidth="true" layoutX="200.0" prefHeight="500.0" prefWidth="800.0" style="-fx-border-color: none;">
+      <ScrollPane fitToWidth="true" layoutX="200.0" layoutY="56.0" prefHeight="444.0" prefWidth="800.0" style="-fx-border-color: #f1f2f5; -fx-background-color: #f1f2f5;">
          <content>
-            <GridPane fx:id="moviesGrid" prefHeight="500.0" prefWidth="800.0" style="-fx-padding: 10;">
+            <GridPane fx:id="moviesGrid" prefHeight="444.0" prefWidth="783.0" style="-fx-padding: 10; -fx-border-color: #f1f2f5; -fx-background-color: #f1f2f5;">
                <columnConstraints>
                   <ColumnConstraints />
                </columnConstraints>
@@ -66,5 +66,10 @@
             </Pane>
          </children>
       </Pane>
+      <Label layoutX="220.0" layoutY="20.0" text="Sessões">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
