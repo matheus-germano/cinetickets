@@ -9,6 +9,7 @@ import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Models.User;
 import com.mycompany.cinetickets.Utils.Base64Utils;
 import com.mycompany.cinetickets.Utils.Misc;
+import com.mycompany.cinetickets.Utils.Navigation;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -31,7 +32,7 @@ import javafx.stage.Stage;
  * @author matheus
  */
 public class SignInController {
-    Misc misc = new Misc();
+    Navigation nav = new Navigation();
 
     @FXML
     private TextField tfEmail;
@@ -150,11 +151,11 @@ public class SignInController {
 
     @FXML
     public void goToMovieSessions() throws IOException {
-        misc.navigateTo("movieSessions", (Stage) tfPassword.getScene().getWindow());
+        nav.navigateTo("movieSessions", (Stage) tfPassword.getScene().getWindow());
     }
 
     @FXML
     public void goToSignUp() throws IOException {
-        misc.navigateTo("signup", (Stage) tfPassword.getScene().getWindow());
+        nav.navigateTo("signup", (Stage) tfPassword.getScene().getWindow());
     }
 }

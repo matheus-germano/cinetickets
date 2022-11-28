@@ -17,6 +17,7 @@ import com.mycompany.cinetickets.Components.MovieCard;
 import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Models.Movie;
 import com.mycompany.cinetickets.Utils.Misc;
+import com.mycompany.cinetickets.Utils.Navigation;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -130,9 +131,9 @@ public class MovieSessions implements Initializable {
 
   @FXML
   public void logout() throws IOException {
-    Misc misc = new Misc();
+    Navigation nav = new Navigation();
     App.user = null;
 
-    misc.navigateTo("signin", (Stage) btnLogout.getScene().getWindow());
+    nav.navigateTo("signin", (Stage) btnLogout.getScene().getWindow());
   }
 }

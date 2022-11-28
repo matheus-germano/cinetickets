@@ -7,6 +7,7 @@ package com.mycompany.cinetickets.Controllers;
 import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Utils.Base64Utils;
 import com.mycompany.cinetickets.Utils.Misc;
+import com.mycompany.cinetickets.Utils.Navigation;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -31,7 +32,7 @@ import javafx.stage.Stage;
  * @author matheus
  */
 public class SignUpController {
-    Misc misc = new Misc();
+    Navigation nav = new Navigation();
 
     @FXML
     private Button btnGoToSignIn;
@@ -135,6 +136,6 @@ public class SignUpController {
 
     @FXML
     public void goToSignIn() throws IOException {
-        misc.navigateTo("signin", (Stage) pfPassword.getScene().getWindow());
+        nav.navigateTo("signin", (Stage) pfPassword.getScene().getWindow());
     }
 }
