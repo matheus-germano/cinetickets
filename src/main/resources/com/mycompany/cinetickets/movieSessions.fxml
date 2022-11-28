@@ -33,19 +33,19 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-            <Pane layoutY="50.0" prefHeight="40.0" prefWidth="200.0">
+            <Pane fx:id="goToMyProfileBtn" layoutY="50.0" onMouseClicked="#goToMyProfile" prefHeight="40.0" prefWidth="200.0">
                <children>
                   <Pane prefHeight="40.0" prefWidth="10.0" />
                   <Label layoutX="26.0" layoutY="12.0" text="Meu perfil" />
                </children>
             </Pane>
-            <Pane layoutY="90.0" prefHeight="40.0" prefWidth="200.0">
+            <Pane fx:id="goToSessionsBtn" layoutY="90.0" onMouseClicked="#goToSessions" prefHeight="40.0" prefWidth="200.0">
                <children>
                   <Pane prefHeight="40.0" prefWidth="10.0" style="-fx-background-color: #FF9900;" />
                   <Label layoutX="26.0" layoutY="12.0" text="Sessões" />
                </children>
             </Pane>
-            <Pane layoutY="130.0" prefHeight="40.0" prefWidth="200.0">
+            <Pane fx:id="goToMyTicketsBtn" layoutY="130.0" onMouseClicked="#goToMyTickets" prefHeight="40.0" prefWidth="200.0">
                <children>
                   <Pane prefHeight="40.0" prefWidth="10.0" />
                   <Label layoutX="26.0" layoutY="12.0" text="Meus ingressos" />

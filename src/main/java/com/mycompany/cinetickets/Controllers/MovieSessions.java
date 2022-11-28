@@ -29,12 +29,23 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class MovieSessions implements Initializable {
+public class MovieSessions extends Navigation implements Initializable {
+  Navigation nav = new Navigation();
+
   @FXML
   private Label lbWelcome;
 
   @FXML
   private GridPane moviesGrid;
+
+  @FXML
+  private Pane goToMyProfileBtn;
+
+  @FXML
+  private Pane goToSessionsBtn;
+
+  @FXML
+  private Pane goToMyTicketsBtn;
 
   @FXML
   private Pane btnLogout;
@@ -131,9 +142,23 @@ public class MovieSessions implements Initializable {
 
   @FXML
   public void logout() throws IOException {
-    Navigation nav = new Navigation();
     App.user = null;
 
     nav.navigateTo("signin", (Stage) btnLogout.getScene().getWindow());
+  }
+
+  @FXML
+  public void goToMyProfile() throws IOException {
+    nav.navigateTo("editProfile", (Stage) goToMyProfileBtn.getScene().getWindow());
+  }
+
+  @FXML
+  public void goToSessions() throws IOException {
+    nav.navigateTo("movieSessions", (Stage) goToSessionsBtn.getScene().getWindow());
+  }
+
+  @FXML
+  public void goToMyTickets() throws IOException {
+    nav.navigateTo("myTickets", (Stage) goToMyTicketsBtn.getScene().getWindow());
   }
 }
