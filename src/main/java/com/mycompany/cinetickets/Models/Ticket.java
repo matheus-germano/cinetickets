@@ -17,30 +17,31 @@ public class Ticket {
   boolean isWheelchairUser;
 
   public Ticket(
-      int id,
-      String buyerId,
+      // int id,
+      // String buyerId,
       int movieId,
       int roomId,
-      Date purchaseDate,
+      // Date purchaseDate,
       Date sessionDate,
       float price,
-      String seat,
-      boolean is3d,
-      boolean isSubtitled,
-      boolean isHalfPriced,
-      boolean isWheelchairUser) {
-    this.id = id;
-    this.buyerId = buyerId;
+      String seat
+  // boolean is3d,
+  // boolean isSubtitled,
+  // boolean isHalfPriced,
+  // boolean isWheelchairUser
+  ) {
+    // this.id = id;
+    // this.buyerId = buyerId;
     this.movieId = movieId;
     this.roomId = roomId;
-    this.purchaseDate = purchaseDate;
+    // this.purchaseDate = purchaseDate;
     this.sessionDate = sessionDate;
     this.price = price;
     this.seat = seat;
-    this.is3d = is3d;
-    this.isSubtitled = isSubtitled;
-    this.isHalfPriced = isHalfPriced;
-    this.isWheelchairUser = isWheelchairUser;
+    // this.is3d = is3d;
+    // this.isSubtitled = isSubtitled;
+    // this.isHalfPriced = isHalfPriced;
+    // this.isWheelchairUser = isWheelchairUser;
   }
 
   public int getId() {

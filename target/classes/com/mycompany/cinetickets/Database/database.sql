@@ -18,7 +18,8 @@ nome VARCHAR(45) NOT NULL,
 genero VARCHAR(45) NOT NULL,
 lancamento DATE NOT NULL,
 duracao TIME NOT NULL,
-classificacao enum ('Livre','10 anos','12 anos','14 anos','16 anos','18 anos')
+classificacao enum ('Livre','10 anos','12 anos','14 anos','16 anos','18 anos'),
+poster text
 );
 
 CREATE TABLE sala (
@@ -56,16 +57,16 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 );
 
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('Sonic 2','Animação','2022-04-07', 20200,'10 anos');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('Doutor Estranho no Multiverso da Loucura','Fantasia','2022-05-05', 20600,'14 anos');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('Jujutsu Kaisen 0','Anime','2022-04-28', 14500,'14 anos');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('Medida Provisória','Drama','2022-04-14', 13400,'14 anos');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('Jurassic World: Domínio','Ficção Científica','2022-06-02', 22700,'12 anos');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('Cidade Perdida','Aventura','2022-04-21', 15200,'14 anos');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('A Medium','Terror','2022-05-19', 21100,'16 anos');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('D. P. A. 3 - Uma Aventura no Fim do Mundo','Comédia','2021-01-07', 10200,'Livre');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('Batman','Ação','2022-03-03', 25600, '14 anos');
-insert into filme (nome, genero, lancamento, duracao, classificacao) values ('The Joker', 'Drama', '2019-10-04', 20200, '16 anos');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('Sonic 2','Animação','2022-04-07', 20200,'10 anos','https://jovemnerd.com.br/wp-content/uploads/2022/02/Poster-de-Sonic-2-760x950.jpg');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('Doutor Estranho no Multiverso da Loucura','Fantasia','2022-05-05', 20600,'14 anos', 'https://upload.wikimedia.org/wikipedia/pt/0/08/Doctor_Strange_in_the_Multiverse_of_Madness_poster.jpeg');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('Jujutsu Kaisen 0','Anime','2022-04-28', 14500,'14 anos', 'https://d1fz32b7q4znht.cloudfront.net/wp-content/uploads/2021/10/Jujutsu-Kaisen-0-GQCA-poster.jpg');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('Medida Provisória','Drama','2022-04-14', 13400,'14 anos', 'https://cineclick-static.flixmedia.cloud/1280/processed/518f41d8-1a6c-4692-8842-f806d194577d.webp');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('Jurassic World: Domínio','Ficção Científica','2022-06-02', 22700,'12 anos', 'https://m.media-amazon.com/images/M/MV5BOTBjMjA4NmYtN2RjMi00YWZlLTliYTktOTIwMmNkYjYxYmE1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_FMjpg_UX1000_.jpg');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('Cidade Perdida','Aventura','2022-04-21', 15200,'14 anos', 'https://br.web.img3.acsta.net/pictures/21/12/16/15/18/0828406.jpg');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('A Medium','Terror','2022-05-19', 21100,'16 anos', 'https://i0.wp.com/cebolaverde.com.br/wp-content/uploads/2022/05/Poster-Alternativo-A-Medium-65x95cm-scaled.jpg?ssl=1');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('D. P. A. 3 - Uma Aventura no Fim do Mundo','Comédia','2021-01-07', 10200,'Livre', 'https://s2.glbimg.com/pYtnpGa5Gg27TFnkG3Cj-o5PBtE=/e.glbimg.com/og/ed/f/original/2020/10/12/dpa3_final1_g.jpg');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('Batman','Ação','2022-03-03', 25600, '14 anos', 'https://img.elo7.com.br/product/original/3FBA809/big-poster-filme-batman-2022-90x60-cm-lo002-poster-batman.jpg');
+insert into filme (nome, genero, lancamento, duracao, classificacao, poster) values ('The Joker', 'Drama', '2019-10-04', 20200, '16 anos', 'https://http2.mlstatic.com/D_NQ_NP_972010-MLB47709378565_092021-W.jpg');
 
 insert into pessoa values
 ('12345678900', 'Matheus Germano','2003-02-27', 'dev.mgermano@gmail.com', 'QE1nMjcwMjAzQA==','administrador'),
@@ -106,8 +107,8 @@ insert into sessao values
 ('2022-11-20 16:30:00', 1, 4);
 
 insert into ticket values
-(default,'00987654321', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C08', 0, 0, 1, 0),
-(default,'00987654321', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C09', 0, 0, 1, 0),
+(default,'12345678900', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C08', 0, 0, 1, 0),
+(default,'12345678900', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C09', 0, 0, 1, 0),
 (default,'00987654321', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C10', 0, 0, 1, 0),
 (default,'00987654321', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C11', 0, 0, 1, 0),
 (default,'00987654321', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C12', 0, 0, 1, 0),
@@ -117,9 +118,9 @@ insert into ticket values
 (default,'00987654321', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C11', 0, 0, 1, 0),
 (default,'00987654321', 1, 4,'2022-11-20 14:30:00','2022-11-19 14:30:00', 11.00, 'C12', 0, 0, 1, 0),
 
-(default,'22222222222', 9, 3,'2022-11-18 12:30:00','2022-11-19 14:30:00', 22.00, 'B08', 0, 0, 0, 0),
+(default,'12345678900', 9, 3,'2022-11-18 12:30:00','2022-11-19 14:30:00', 22.00, 'B08', 0, 0, 0, 0),
 (default,'33333333333', 9, 3,'2022-11-18 12:30:00','2022-11-19 14:30:00', 22.00, 'D09', 0, 0, 0, 0),
-(default,'44444444444', 9, 3,'2022-11-18 12:30:00','2022-11-19 14:30:00', 22.00, 'B10', 0, 0, 0, 0),
+(default,'12345678900', 9, 3,'2022-11-18 12:30:00','2022-11-19 14:30:00', 22.00, 'B10', 0, 0, 0, 0),
 (default,'22222222222', 9, 3,'2022-11-18 12:30:00','2022-11-19 14:30:00', 22.00, 'B08', 0, 0, 0, 0),
 (default,'33333333333', 9, 3,'2022-11-18 12:30:00','2022-11-19 14:30:00', 22.00, 'D09', 0, 0, 0, 0),
 (default,'44444444444', 9, 3,'2022-11-18 12:30:00','2022-11-19 14:30:00', 22.00, 'D10', 0, 0, 0, 0),

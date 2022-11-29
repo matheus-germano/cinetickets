@@ -60,7 +60,7 @@ public class SignInController {
 
             try {
                 con = dbConnection.getConnection();
-                String query = "select * from cliente where email = '" + email + "' and senha = '" + password
+                String query = "select * from pessoa where email = '" + email + "' and senha = '" + password
                         + "' limit 1";
 
                 st = (Statement) con.createStatement();

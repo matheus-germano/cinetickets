@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Components.TicketCard">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="760.0" style="-fx-background-color: #fff; -fx-border-radius: 8px;">
+         <children>
+            <Label fx:id="lbMovie" layoutX="14.0" layoutY="12.0" maxWidth="150.0" text="Filme" />
+            <Label fx:id="lbSessionDate" layoutX="242.0" layoutY="12.0" maxWidth="150.0" text="Horario" />
+            <Label fx:id="lbRoomId" layoutX="442.0" layoutY="12.0" text="Sala" />
+            <Label fx:id="lbSeat" layoutX="513.0" layoutY="12.0" text="Assento" />
+            <Label fx:id="lbPrice" layoutX="605.0" layoutY="12.0" text="Preço" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

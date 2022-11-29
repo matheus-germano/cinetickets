@@ -76,7 +76,7 @@ public class SignUpController {
 
             try {
                 con = dbConnection.getConnection();
-                String query = "insert into cliente values ('" + id + "', '" + name + "','" + birthDate + "', '" + email
+                String query = "insert into pessoa values ('" + id + "', '" + name + "','" + birthDate + "', '" + email
                         + "', '" + password + "')";
 
                 st = (Statement) con.createStatement();

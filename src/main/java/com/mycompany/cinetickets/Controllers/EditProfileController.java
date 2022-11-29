@@ -99,7 +99,7 @@ public class EditProfileController implements Initializable {
         }
 
         con = dbConnection.getConnection();
-        String query = "update cliente set nome = '" + name + "', email = '" + email + "', senha = '" + password
+        String query = "update pessoa set nome = '" + name + "', email = '" + email + "', senha = '" + password
             + "' where cpf = '" + App.user.getId() + "'";
 
         st = (Statement) con.createStatement();
