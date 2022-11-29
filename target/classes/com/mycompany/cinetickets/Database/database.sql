@@ -219,7 +219,7 @@ DELIMITER ;
 call lucros_sessoes_compradas();
 
 -- Salas vendidas em uma data especifica
-drop procedure sala_assentos_vendidos_data_especifica;
+drop procedure IF EXISTS sala_assentos_vendidos_data_especifica;
 DELIMITER !
 CREATE PROCEDURE sala_assentos_vendidos_data_especifica (data_especifica datetime)
 BEGIN
@@ -235,7 +235,7 @@ call sala_assentos_vendidos_data_especifica('2022-11-20');
 
 -- Lucro em um intervalo de  tempo
 
-drop procedure lucro_em_um_intervalo_de_tempo;
+drop procedure IF EXISTS lucro_em_um_intervalo_de_tempo;
 DELIMITER !
 CREATE PROCEDURE lucro_em_um_intervalo_de_tempo (data_inicio datetime, data_fim datetime)
 BEGIN
@@ -250,7 +250,7 @@ call lucro_em_um_intervalo_de_tempo('2022-11-20','2022-11-20');
 
 -- Top 3 filmes mais vistos
 
-drop procedure top_3_filmes;
+drop procedure IF EXISTS top_3_filmes;
 DELIMITER !
 CREATE PROCEDURE top_3_filmes ()
 BEGIN
@@ -292,7 +292,7 @@ DELIMITER ;
 call media_e_quantidade_tickets();
 
 -- Function para retornar a sala com maior capacidade de cadeiras
-drop function max_capacidade_sala;
+drop function IF EXISTS max_capacidade_sala;
 DELIMITER !
 CREATE function max_capacidade_sala ()
 returns int deterministic
@@ -311,7 +311,7 @@ select max_capacidade_sala();
 
 -- VIEWS ----------------------------------------------------------------------------------------------------------------------------------------------
 -- Consulta Nome, Preço e Data dos ingressos comprados
-drop view info_cliente;
+drop view IF EXISTS info_cliente;
 CREATE VIEW info_cliente (nome, precoTicket, dataSessao) AS 
 	SELECT pessoa.nome as 'Nome do Cliente', ticket.preco as 'Preço do Ticket', date_format(ticket.dataSessao,"%d/%m/%Y %h:%i:%s") as 'Data e Hora da Sessão'
 	FROM pessoa inner join ticket on pessoa.cpf = ticket.cpfCliente;
