@@ -136,15 +136,16 @@ public class SignInController {
             return false;
         }
 
-        if (!misc.validatePassword(tfPassword.getText())) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setTitle("Ocorreu um erro");
-            a.setContentText(
-                    "A senha deve conter pelo menos um numero, uma letra maiuscula, uma minuscula e um caracter especial");
-            a.showAndWait();
+        // if (!misc.validatePassword(tfPassword.getText())) {
+        // Alert a = new Alert(Alert.AlertType.ERROR);
+        // a.setTitle("Ocorreu um erro");
+        // a.setContentText(
+        // "A senha deve conter pelo menos um numero, uma letra maiuscula, uma minuscula
+        // e um caracter especial");
+        // a.showAndWait();
 
-            return false;
-        }
+        // return false;
+        // }
 
         return true;
     }

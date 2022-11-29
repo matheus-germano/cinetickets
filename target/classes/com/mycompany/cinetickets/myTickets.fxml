@@ -58,10 +58,19 @@
             </Pane>
          </children>
       </Pane>
-      <GridPane fx:id="ticketsGrid" layoutX="210.0" layoutY="65.0" prefHeight="0.0" prefWidth="760.0">
+      <GridPane fx:id="ticketsGrid" layoutX="210.0" layoutY="105.0" prefHeight="0.0" prefWidth="760.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
       </GridPane>
+      <Pane layoutX="220.0" layoutY="55.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="760.0" style="-fx-background-color: #fff; -fx-border-radius: 8px;">
+         <children>
+            <Label fx:id="lbMovie" layoutX="14.0" layoutY="12.0" maxWidth="150.0" style="-fx-font-weight: 700;" text="Filme" />
+            <Label fx:id="lbSessionDate" layoutX="242.0" layoutY="12.0" maxWidth="150.0" style="-fx-font-weight: 700;" text="Horario" />
+            <Label fx:id="lbRoomId" layoutX="442.0" layoutY="12.0" style="-fx-font-weight: 700;" text="Sala" />
+            <Label fx:id="lbSeat" layoutX="513.0" layoutY="12.0" style="-fx-font-weight: 700;" text="Assento" />
+            <Label fx:id="lbPrice" layoutX="605.0" layoutY="12.0" style="-fx-font-weight: 700;" text="Preço" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
