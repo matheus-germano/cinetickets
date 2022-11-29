@@ -29,7 +29,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class MovieSessions extends Navigation implements Initializable {
+public class MovieSessionsController extends Navigation implements Initializable {
   Navigation nav = new Navigation();
 
   @FXML

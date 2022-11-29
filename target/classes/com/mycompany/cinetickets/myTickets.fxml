@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #f1f2f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.MyTickets">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #f1f2f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.MyTicketsController">
    <children>
       <Label layoutX="220.0" layoutY="20.0" text="Meus ingressos">
          <font>
@@ -17,7 +17,7 @@
       </Label>
       <Pane prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #fff;">
          <children>
-            <Label layoutX="26.0" layoutY="10.0" text="Bem vindo(a)," />
+            <Label layoutX="26.0" layoutY="10.0" maxWidth="160.0" text="Bem vindo(a)," />
             <Label fx:id="lbWelcome" layoutX="26.0" layoutY="27.0">
                <font>
                   <Font name="System Bold" size="12.0" />
