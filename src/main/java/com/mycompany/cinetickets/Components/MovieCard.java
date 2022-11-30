@@ -1,23 +1,31 @@
 package com.mycompany.cinetickets.Components;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.mycompany.cinetickets.App;
+import com.mycompany.cinetickets.Controllers.BuyTicketsController;
 import com.mycompany.cinetickets.Controllers.SignInController;
 import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Models.Movie;
 import com.mycompany.cinetickets.Models.Session;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class MovieCard {
   private int movieId;
@@ -112,5 +120,23 @@ public class MovieCard {
   public void setGridParent(GridPane pane, ArrayList<MovieCard> controllers) {
     this.gridParent = pane;
     this.controllers = controllers;
+  }
+
+  @FXML
+  public void goToBuyTickets() throws IOException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(App.class.getResource("buyTickets.fxml"));
+    Parent parent = loader.load();
+    Scene scene = new Scene(parent);
+
+    BuyTicketsController controller = loader.getController();
+    Date sessionDate = new Date();
+    controller.setBuyTicketData(movieTitle.getText(),
+        moviePoster.getImage(), sessionDate, 1);
+
+    Stage stage = (Stage) moviePoster.getScene().getWindow();
+
+    stage.setScene(scene);
+    stage.show();
   }
 }
