@@ -82,6 +82,11 @@ public class SignUpController {
                 st = (Statement) con.createStatement();
                 st.execute(query);
 
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setTitle("Sucesso!");
+                a.setContentText("Cadastrado com sucesso! Faça o login");
+                a.showAndWait();
+
                 try {
                     goToSignIn();
                 } catch (Exception e) {
@@ -89,6 +94,16 @@ public class SignUpController {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex.getMessage());
+
+                if (ex.getMessage().startsWith("Duplicate entry")) {
+                    Alert a = new Alert(Alert.AlertType.ERROR);
+                    a.setTitle("Ocorreu um erro");
+                    a.setContentText("CPF ja cadastrado no sistema");
+                    a.showAndWait();
+
+                    return;
+                }
             } finally {
                 try {
                     if (con != null) {

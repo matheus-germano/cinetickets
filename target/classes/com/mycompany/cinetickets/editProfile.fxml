@@ -28,7 +28,10 @@
       <TextField fx:id="tfEmail" layoutX="220.0" layoutY="268.0" prefHeight="30.0" prefWidth="360.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
       <Label layoutX="620.0" layoutY="241.0" text="Senha" />
       <TextField fx:id="tfPassword" layoutX="620.0" layoutY="268.0" prefHeight="30.0" prefWidth="360.0" style="-fx-background-color: #fff; -fx-border-color: #FF9900; -fx-border-radius: 5;" />
-      <Button fx:id="btnSaveChanges" layoutX="780.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleSaveChanges" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700;" text="Salvar alterações" textFill="WHITE" />
+      <Button fx:id="btnSaveChanges" layoutX="780.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleSaveChanges" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700;" text="Salvar alterações" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Pane prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #fff;">
          <children>
             <Label layoutX="26.0" layoutY="10.0" text="Bem vindo(a)," />
