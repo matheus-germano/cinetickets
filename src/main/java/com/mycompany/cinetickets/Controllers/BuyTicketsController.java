@@ -262,6 +262,13 @@ public class BuyTicketsController implements Initializable {
         Logger.getLogger(BuyTicketsController.class.getName()).log(Level.SEVERE, null, ex);
       }
     }
+
+    selectedSeats = new ArrayList();
+    int totalSelectedSeats = selectedSeats.size();
+    float totalPurchasePrice = totalSelectedSeats * 22;
+    lbTotalTickets.setText(totalSelectedSeats + "");
+    lbPurchasePrice.setText("R$ " + String.format("%.2f", totalPurchasePrice));
+    fillSeatsGrid();
   }
 
   @FXML
