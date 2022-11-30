@@ -28,6 +28,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class MovieCard {
+  private Movie movie;
   private int movieId;
   private ArrayList<MovieCard> controllers = new ArrayList();
   private GridPane gridParent;
@@ -99,6 +100,7 @@ public class MovieCard {
   }
 
   public void setMovieData(Movie movie) {
+    this.movie = movie;
     this.movieId = movie.getId();
     this.movieDuration.setText(movie.getDuration() + "");
     this.movieTitle.setText(movie.getName());
@@ -131,8 +133,7 @@ public class MovieCard {
 
     BuyTicketsController controller = loader.getController();
     Date sessionDate = new Date();
-    controller.setBuyTicketData(movieTitle.getText(),
-        moviePoster.getImage(), sessionDate, 1);
+    controller.setBuyTicketData(movie, sessionDate, 1);
 
     Stage stage = (Stage) moviePoster.getScene().getWindow();
 

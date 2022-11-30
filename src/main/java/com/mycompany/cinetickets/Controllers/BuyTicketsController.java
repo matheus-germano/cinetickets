@@ -6,13 +6,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.mycompany.cinetickets.App;
 import com.mycompany.cinetickets.Components.SeatComponent;
 import com.mycompany.cinetickets.Database.DbConnection;
+import com.mycompany.cinetickets.Models.Movie;
 import com.mycompany.cinetickets.Models.Seat;
 import com.mycompany.cinetickets.Utils.Navigation;
 
@@ -73,8 +76,10 @@ public class BuyTicketsController implements Initializable {
   Navigation nav = new Navigation();
   private ArrayList<SeatComponent> controllers = new ArrayList();
   private String[] seatColumns = { "A", "B", "C", "D", "E", "F" };
+  private ArrayList<String> alreadyBoughtSeats = new ArrayList();
   private ArrayList<String> selectedSeats = new ArrayList<>();
   public static BuyTicketsController buyTicketsController;
+  private Movie movie;
 
   public BuyTicketsController() {
     buyTicketsController = this;
@@ -83,6 +88,63 @@ public class BuyTicketsController implements Initializable {
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {
     lbWelcome.setText(App.user.getName() + "!");
+  }
+
+  public void setBuyTicketData(Movie movie, Date sessionDate, int roomId) {
+    this.movie = movie;
+    lbMovieName.setText(movie.getName());
+    lbSessionDateAndRoom.setText(sessionDate + " | Sala " + roomId);
+
+    Image moviePoster = new Image(movie.getPoster());
+
+    ivMoviePoster.setImage(moviePoster);
+
+    fillSeatsGrid();
+  }
+
+  public void fillSeatsGrid() {
+    Connection con = null;
+    ResultSet rs = null;
+    Statement st = null;
+    DbConnection dbConnection = new DbConnection();
+
+    gpSeatsGrid.getColumnConstraints().clear();
+    gpSeatsGrid.getRowConstraints().clear();
+    gpSeatsGrid.getChildren().clear();
+
+    try {
+      con = dbConnection.getConnection();
+      String query = "select * from ticket where idFilme = " + movie.getId() + " and numeroSala = " + 4
+          + " and dataSessao = '2022-11-20 14:30:00'";
+
+      st = (Statement) con.createStatement();
+      rs = st.executeQuery(query);
+
+      if (rs.next() == false) {
+      } else {
+        do {
+          alreadyBoughtSeats.add(rs.getString("assento"));
+        } while (rs.next());
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+      try {
+        if (con != null) {
+          con.close();
+        }
+
+        if (st != null) {
+          st.close();
+        }
+
+        if (rs != null) {
+          rs.close();
+        }
+      } catch (SQLException ex) {
+        Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    }
 
     int gridColumns = 0;
     int gridRow = 1;
@@ -98,12 +160,18 @@ public class BuyTicketsController implements Initializable {
             return;
           }
 
-          Seat seat = new Seat(
-              column + i + "",
-              "common",
-              false);
+          String seatId = (column + i).toString();
+          String seatType = "common";
 
-          System.out.println(seat.getId());
+          if (alreadyBoughtSeats.contains(seatId)) {
+            System.out.println("Entrou");
+            seatType = "bought";
+          }
+
+          Seat seat = new Seat(
+              seatId,
+              seatType,
+              false);
 
           FXMLLoader fxmlLoader = new FXMLLoader();
           fxmlLoader.setLocation(fxmlUrl);
@@ -123,13 +191,6 @@ public class BuyTicketsController implements Initializable {
       gridRow++;
       gridColumns = 0;
     }
-  }
-
-  public void setBuyTicketData(String movieName, Image moviePoster, Date sessionDate, int roomId) {
-    lbMovieName.setText(movieName);
-    lbSessionDateAndRoom.setText(sessionDate + " | Sala " + roomId);
-
-    ivMoviePoster.setImage(moviePoster);
   }
 
   public void addSelectedSeatInList(String seatId) {
@@ -167,13 +228,21 @@ public class BuyTicketsController implements Initializable {
       con = dbConnection.getConnection();
 
       for (String seatId : selectedSeats) {
-        String query = "insert into ticket values" +
-            "(default," + App.user.getId() + ", 1, 4,'2022-11-20 14:30:00'," + new Date() + ", 11.00, '" + seatId
-            + "', 0, 0, 1, 0)";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String purchaseDate = sdf.format(new Date());
+
+        String query = "insert into ticket values (default,'" + App.user.getId() + "', " + movie.getId()
+            + ", 4,'2022-11-20 14:30:00','" + purchaseDate + "', 11.00, '"
+            + seatId + "', 0, 0, 1, 0)";
 
         st = (Statement) con.createStatement();
-        rs = st.executeQuery(query);
+        st.execute(query);
       }
+
+      Alert a = new Alert(Alert.AlertType.INFORMATION);
+      a.setTitle("Sucesso!");
+      a.setContentText("Ingresso(s) comprado(s) com sucesso");
+      a.showAndWait();
     } catch (SQLException ex) {
       Logger.getLogger(BuyTicketsController.class.getName()).log(Level.SEVERE, null, ex);
     } finally {

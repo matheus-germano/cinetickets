@@ -7,6 +7,8 @@ import com.mycompany.cinetickets.Controllers.BuyTicketsController;
 import com.mycompany.cinetickets.Models.Seat;
 
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -30,9 +32,24 @@ public class SeatComponent {
     this.id = seat.getId();
     this.type = seat.getType();
     this.isOcupied = seat.getIsOcupied();
+
+    if (this.type == "bought") {
+      pSeat.setDisable(true);
+      pSeat.setCursor(Cursor.WAIT);
+      pSeat.setStyle("-fx-background-color: gray; -fx-background-radius: 100; -fx-border-radius: 100");
+    }
   }
 
   public void handleChangeSeatStatus() {
+    if (type == "bought") {
+      Alert a = new Alert(Alert.AlertType.ERROR);
+      a.setTitle("Ocorreu um erro");
+      a.setContentText("Esse assento ja foi comprado por outro usuario");
+      a.showAndWait();
+
+      return;
+    }
+
     if (isOcupied) {
       BuyTicketsController.buyTicketsController.removeSeatFromList(id);
       this.isOcupied = false;
