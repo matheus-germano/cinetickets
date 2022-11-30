@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #f1f2f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Controllers.BuyTicketsController">
    <children>
       <Pane prefHeight="500.0" prefWidth="200.0" style="-fx-background-color: #fff;">
@@ -72,7 +71,7 @@
          </font>
       </Label>
       <Label fx:id="lbSessionDateAndRoom" layoutX="360.0" layoutY="39.0" text="Hoje - 17:30 | Sala 1" />
-      <GridPane fx:id="gpSeatsGrid" layoutX="220.0" layoutY="217.0" prefHeight="196.0" prefWidth="540.0" style="-fx-background-color: #fff;">
+      <GridPane fx:id="gpSeatsGrid" layoutX="220.0" layoutY="217.0" prefHeight="196.0" prefWidth="540.0" style="-fx-background-color: #fff; -fx-padding: 10;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -91,5 +90,51 @@
       </Label>
       <Label fx:id="lbPurchasePrice" layoutX="395.0" layoutY="95.0" text="R$ 00.00" />
       <Label layoutX="780.0" layoutY="190.0" text="Legenda:" />
+      <AnchorPane layoutX="780.0" layoutY="217.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0">
+         <children>
+            <Pane prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-background-color: #0F9D58;">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <Label layoutX="805.0" layoutY="219.0" text="Disponivel" />
+      <AnchorPane layoutX="780.0" layoutY="246.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0">
+         <children>
+            <Pane prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-background-color: gray;">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/forbidden.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <Label layoutX="805.0" layoutY="248.0" text="Indisponivel" />
+      <AnchorPane layoutX="780.0" layoutY="276.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0">
+         <children>
+            <Pane prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 100; -fx-border-radius: 100; -fx-background-color: #007AFF;">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/check.png" />
+                     </image></ImageView>
+               </children>
+            </Pane>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <Label layoutX="805.0" layoutY="278.0" text="Selecionado" />
    </children>
 </AnchorPane>

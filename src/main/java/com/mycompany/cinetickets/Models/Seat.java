@@ -1,4 +1,4 @@
-package com.mycompany.cinetickets.Components;
+package com.mycompany.cinetickets.Models;
 
 public class Seat {
   String id;
