@@ -75,6 +75,7 @@ public class SignInController {
                     return;
                 } else {
                     User user = new User();
+                    String userType = "cliente";
 
                     do {
                         LocalDate localDate = LocalDate.parse(rs.getString("dataNascimento"));
@@ -84,19 +85,21 @@ public class SignInController {
                                 rs.getString("nome"),
                                 rs.getString("email"),
                                 rs.getString("senha"),
-                                localDate);
+                                localDate,
+                                rs.getString("tipo"));
 
-                        System.out.println(user.getId());
-                        System.out.println(user.getName());
-                        System.out.println(user.getEmail());
-                        System.out.println(user.getPassword());
-                        System.out.println(user.getBirthDate());
+                        userType = rs.getString("tipo");
+
                     } while (rs.next());
 
                     App.user = user;
 
                     try {
-                        goToMovieSessions();
+                        if (userType == "administrador") {
+                            goToAdmin();
+                        } else {
+                            goToMovieSessions();
+                        }
                     } catch (Exception e) {
                         Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, e);
                     }
@@ -136,18 +139,12 @@ public class SignInController {
             return false;
         }
 
-        // if (!misc.validatePassword(tfPassword.getText())) {
-        // Alert a = new Alert(Alert.AlertType.ERROR);
-        // a.setTitle("Ocorreu um erro");
-        // a.setContentText(
-        // "A senha deve conter pelo menos um numero, uma letra maiuscula, uma minuscula
-        // e um caracter especial");
-        // a.showAndWait();
-
-        // return false;
-        // }
-
         return true;
+    }
+
+    @FXML
+    public void goToAdmin() throws IOException {
+        nav.navigateTo("availableMovies", (Stage) tfPassword.getScene().getWindow());
     }
 
     @FXML

@@ -16,13 +16,15 @@ public class User {
     private String email;
     private String password;
     private LocalDate birthDate;
+    private String type;
 
-    public void createUser(String id, String name, String email, String password, LocalDate birthDate) {
+    public void createUser(String id, String name, String email, String password, LocalDate birthDate, String type) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.birthDate = birthDate;
+        this.type = type;
     }
 
     public String getId() {
@@ -63,5 +65,9 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getType() {
+        return type;
     }
 }

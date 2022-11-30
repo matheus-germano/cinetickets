@@ -101,7 +101,7 @@ public class AvailableMoviesController implements Initializable {
     for (Movie movie : movies) {
       try {
         URL fxmlUrl = this.getClass()
-            .getResource("/com/mycompany/cinetickets/AdmMovieCard.fxml");
+            .getResource("/com/mycompany/cinetickets/admMovieCard.fxml");
 
         if (fxmlUrl == null) {
           System.err.println("Cannot find FXML file");
