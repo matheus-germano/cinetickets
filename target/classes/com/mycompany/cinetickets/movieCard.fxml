@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -28,4 +29,7 @@
       <Label fx:id="movieRating" layoutX="159.0" layoutY="43.0" text="00 anos" />
       <ImageView fx:id="movieImageRating" fitHeight="16.0" fitWidth="16.0" layoutX="137.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
    </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </AnchorPane>

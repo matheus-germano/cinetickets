@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorId" prefHeight="150.0" prefWidth="600.0" style="-fx-background-color: fff; -fx-border-radius: 8; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.cinetickets.Components.AdmMovieCard">
+   <children>
+      <ImageView fx:id="moviePoster" fitHeight="150.0" fitWidth="120.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../assets/not-found.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="movieTitle" layoutX="137.0" layoutY="14.0" prefHeight="20.0" prefWidth="141.0" text="Nome" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="movieDuration" layoutX="136.0" layoutY="75.0" prefHeight="17.0" prefWidth="47.0" text="00:00:00" />
+      <Label fx:id="movieRating" layoutX="159.0" layoutY="43.0" text="00 anos" />
+      <ImageView fx:id="movieImageRating" fitHeight="16.0" fitWidth="16.0" layoutX="137.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
+      <Pane fx:id="deleteMovieBtn" layoutX="540.0" layoutY="10.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: red; -fx-background-radius: 8; -fx-border-radius: 8;">
+         <children>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/delete.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>
