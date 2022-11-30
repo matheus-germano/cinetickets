@@ -64,7 +64,10 @@
          </children>
       </Pane>
       <ImageView fx:id="ivMoviePoster" fitHeight="150.0" fitWidth="120.0" layoutX="220.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnConfirmPurchase" layoutX="780.0" layoutY="440.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700;" text="Confirmar pedido" textFill="WHITE" />
+      <Button fx:id="btnConfirmPurchase" layoutX="780.0" layoutY="440.0" mnemonicParsing="false" onAction="#confirmPurchase" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FF9900; -fx-border-radius: 5; -fx-font-weight: 700;" text="Confirmar pedido" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label fx:id="lbMovieName" layoutX="360.0" layoutY="14.0" text="Nome filme">
          <font>
             <Font name="System Bold" size="16.0" />

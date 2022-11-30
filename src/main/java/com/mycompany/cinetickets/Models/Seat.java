@@ -22,4 +22,8 @@ public class Seat {
   public boolean getIsOcupied() {
     return isOcupied;
   }
+
+  public void setIsOcupied(boolean isOcupied) {
+    this.isOcupied = isOcupied;
+  }
 }

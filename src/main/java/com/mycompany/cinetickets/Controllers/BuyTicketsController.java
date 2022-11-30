@@ -2,12 +2,17 @@ package com.mycompany.cinetickets.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.mycompany.cinetickets.App;
 import com.mycompany.cinetickets.Components.SeatComponent;
+import com.mycompany.cinetickets.Database.DbConnection;
 import com.mycompany.cinetickets.Models.Seat;
 import com.mycompany.cinetickets.Utils.Navigation;
 
@@ -15,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -24,11 +30,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class BuyTicketsController implements Initializable {
-  Navigation nav = new Navigation();
-  private ArrayList<SeatComponent> controllers = new ArrayList();
-  private String[] seatColumns = { "A", "B", "C", "D", "E", "F" };
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+public class BuyTicketsController implements Initializable {
   @FXML
   private Button btnConfirmPurchase;
 
@@ -64,6 +69,16 @@ public class BuyTicketsController implements Initializable {
 
   @FXML
   private ImageView ivMoviePoster;
+
+  Navigation nav = new Navigation();
+  private ArrayList<SeatComponent> controllers = new ArrayList();
+  private String[] seatColumns = { "A", "B", "C", "D", "E", "F" };
+  private ArrayList<String> selectedSeats = new ArrayList<>();
+  public static BuyTicketsController buyTicketsController;
+
+  public BuyTicketsController() {
+    buyTicketsController = this;
+  }
 
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {
@@ -115,6 +130,69 @@ public class BuyTicketsController implements Initializable {
     lbSessionDateAndRoom.setText(sessionDate + " | Sala " + roomId);
 
     ivMoviePoster.setImage(moviePoster);
+  }
+
+  public void addSelectedSeatInList(String seatId) {
+    selectedSeats.add(seatId);
+    int totalSelectedSeats = selectedSeats.size();
+    float totalPurchasePrice = totalSelectedSeats * 22;
+    lbTotalTickets.setText(totalSelectedSeats + "");
+    lbPurchasePrice.setText("R$ " + String.format("%.2f", totalPurchasePrice));
+  }
+
+  public void removeSeatFromList(String seatId) {
+    selectedSeats.remove(seatId);
+    int totalSelectedSeats = selectedSeats.size();
+    float totalPurchasePrice = totalSelectedSeats * 22;
+    lbTotalTickets.setText(totalSelectedSeats + "");
+    lbPurchasePrice.setText("R$ " + String.format("%.2f", totalPurchasePrice));
+  }
+
+  public void confirmPurchase() {
+    if (selectedSeats.size() == 0) {
+      Alert a = new Alert(Alert.AlertType.WARNING);
+      a.setTitle("Ocorreu um erro");
+      a.setContentText("Voce deve selecionar um assento antes de continuar");
+      a.showAndWait();
+
+      return;
+    }
+
+    Connection con = null;
+    ResultSet rs = null;
+    Statement st = null;
+    DbConnection dbConnection = new DbConnection();
+
+    try {
+      con = dbConnection.getConnection();
+
+      for (String seatId : selectedSeats) {
+        String query = "insert into ticket values" +
+            "(default," + App.user.getId() + ", 1, 4,'2022-11-20 14:30:00'," + new Date() + ", 11.00, '" + seatId
+            + "', 0, 0, 1, 0)";
+
+        st = (Statement) con.createStatement();
+        rs = st.executeQuery(query);
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(BuyTicketsController.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+      try {
+        if (con != null) {
+          con.close();
+        }
+
+        if (st != null) {
+          st.close();
+        }
+
+        if (rs != null) {
+          rs.close();
+        }
+      } catch (SQLException ex) {
+        Logger.getLogger(BuyTicketsController.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    }
   }
 
   @FXML
